@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Love score · Roast My Aux{% endblock %}
+{% block content %}
+    <p class="eyebrow">Love readiness score</p>
+    <p class="score">{{ score }}<span>/100</span></p>
+    <p class="sub">{{ "Calculated from your top artists. Very scientific." if based_on_music else "Pure vibes. Log in or try the demo for a music-based score." }}</p>
+    <blockquote class="quote big">“{{ roast }}”</blockquote>
+
+    {% if cat_img_url %}
+        <figure class="cat">
+            <img src="{{ cat_img_url }}" alt="A random cat">
+            <figcaption>Your only emotionally available companion right now.</figcaption>
+        </figure>
+    {% endif %}
+
+    <div class="actions">
+        <a class="btn" href="{{ url_for('home') }}">Back home</a>
+    </div>
+{% endblock %}

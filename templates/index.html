@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <p class="eyebrow">Nobody's dating anyway</p>
+    <h1>Let your music taste<br>speak for itself.</h1>
+    <p class="sub">Connect Spotify and get roasted for your top artists, see how basic you really are, and get a love-readiness score you didn't ask for.</p>
+
+    <div class="actions">
+        {% if logged_in %}
+            <a class="btn primary" href="{{ url_for('top_artists') }}">See my roast</a>
+        {% else %}
+            <a class="btn primary" href="{{ url_for('login') }}">Log in with Spotify</a>
+        {% endif %}
+        <a class="btn" href="{{ url_for('demo') }}">Try the demo</a>
+    </div>
+
+    <hr>
+
+    <h2>Need a pickup line?</h2>
+    <form method="POST">
+        <button class="btn" type="submit">{{ "Another one" if pickup else "Give me one" }}</button>
+    </form>
+    {% if pickup %}
+        <blockquote class="quote">“{{ pickup }}”</blockquote>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Your roast · Roast My Aux{% endblock %}
+{% block content %}
+    {% if demo %}
+        <p class="notice">Demo mode — sample artists, no Spotify login needed.</p>
+    {% else %}
+        <nav class="tabs" aria-label="Time range">
+            {% for key, label in time_ranges.items() %}
+                <a href="{{ url_for('top_artists', range=key) }}"
+                   class="tab {{ 'active' if key == time_range }}">{{ label }}</a>
+            {% endfor %}
+        </nav>
+    {% endif %}
+
+    <p class="eyebrow">Your top 5 · {{ time_ranges[time_range] }}</p>
+    <ol class="artists">
+        {% for artist in artists %}
+            <li>
+                {% if artist.image %}
+                    <img src="{{ artist.image }}" alt="" loading="lazy">
+                {% else %}
+                    <span class="avatar">{{ artist.name[0] }}</span>
+                {% endif %}
+                <div>
+                    {% if artist.url %}
+                        <a href="{{ artist.url }}" target="_blank" rel="noopener">{{ artist.name }}</a>
+                    {% else %}
+                        <strong>{{ artist.name }}</strong>
+                    {% endif %}
+                    {% if artist.genres %}<small>{{ artist.genres | join(" · ") }}</small>{% endif %}
+                </div>
+            </li>
+        {% else %}
+            <li>No top artists yet — go listen to something.</li>
+        {% endfor %}
+    </ol>
+
+    <blockquote class="quote big">“{{ roast }}”</blockquote>
+
+    <section class="meter">
+        <div class="meter-head">
+            <h2>Basic-o-meter</h2>
+            <span class="meter-num">{{ meter }}%</span>
+        </div>
+        <div class="bar"><div class="fill" style="width: {{ meter }}%"></div></div>
+        <p class="sub">{{ meter_verdict }}</p>
+    </section>
+
+    <div class="actions">
+        <a class="btn primary" href="{{ url_for('love_score') }}">Check my love score</a>
+        <a class="btn" href="{{ url_for('home') }}">Back home</a>
+    </div>
+{% endblock %}

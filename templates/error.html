@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Oops · Roast My Aux{% endblock %}
+{% block content %}
+    <p class="eyebrow">Well, that's awkward</p>
+    <h1>Something went wrong.</h1>
+    <p class="sub">{{ message }}</p>
+    <div class="actions">
+        <a class="btn primary" href="{{ url_for('demo') }}">Try the demo instead</a>
+        <a class="btn" href="{{ url_for('home') }}">Back home</a>
+    </div>
+{% endblock %}

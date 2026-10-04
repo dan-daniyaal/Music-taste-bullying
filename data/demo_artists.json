@@ -1,0 +1,7 @@
+[
+  {"name": "Frank Ocean", "genres": ["r&b", "neo soul"], "popularity": 82, "image": null, "url": null},
+  {"name": "SZA", "genres": ["r&b", "pop"], "popularity": 89, "image": null, "url": null},
+  {"name": "Mac Miller", "genres": ["hip hop", "rap"], "popularity": 79, "image": null, "url": null},
+  {"name": "Steve Lacy", "genres": ["bedroom pop", "r&b"], "popularity": 74, "image": null, "url": null},
+  {"name": "Daniel Caesar", "genres": ["r&b", "soul"], "popularity": 77, "image": null, "url": null}
+]
